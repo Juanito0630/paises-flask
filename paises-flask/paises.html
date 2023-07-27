@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <h1> Listado de paises </h1>
+    {% if username %}
+    <h2>Bienvenida, {{username}}</h2>
+    {% else %}
+    <h2>Usuario Invitado</h2>
+    {% endif %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre Pais</th>
+                <th>Poblacion</th>
+                <th>Densidad</th>
+                <th>Superficie</th>
+                <th>NoPaises</th>
+                <th>Paises</th>
+                <th>Moneda</th>
+                <th>Cpital</th>
+                <th>Poblacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for continente in continentes %}
+            <tr>
+                <td rowspan="{{continente.paises | length}}">{{continente.nombre}}</td>
+                <td rowspan="{{continente.paises | length}}">{{continente.poblacion}}</td>
+                <td rowspan="{{continente.paises | length}}">{{continente.densidad}}</td>
+                <td rowspan="{{continente.paises | length}}">{{continente.superficie}}</td>
+                <td rowspan="{{continente.paises | length}}">{{continente.Nopaises}}</td>
+               
+                {% for pais in continente.paises %}
+                   <td>{{pais.nom}}</td>
+                   <td>{{pais.mon}}</td>
+                   <td>{{pais.cap}}</td>
+                   <td>{{pais.pob}}</td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+    
+</body>
+</html>
